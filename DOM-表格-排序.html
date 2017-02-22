@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>DOM - 表格 - 搜索</title>
+</head>
+<body>
+<button id="search">排序</button>
+<br/>
+<br/>
+<hr/>
+<table border="1">
+    <thead>
+    <tr>
+    <th>id</th>
+    <th>姓名</th>
+    <th>年龄</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>13</td>
+        <td>yagao</td>
+        <td>30</td>
+    </tr>
+
+
+    <tr>
+        <td>466</td>
+        <td>lingling</td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td>31</td>
+        <td>keke</td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td>24</td>
+        <td>yiXing</td>
+        <td>30</td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    var oTab = document.getElementsByTagName("table")[0];
+    var oldColor = "";
+    for(var i=0;i<oTab.tBodies[0].rows.length;i++){
+        if(i%2){
+            oTab.tBodies[0].rows[i].style.backgroundColor = "#ccc"
+        };
+        oTab.tBodies[0].rows[i].onmouseover = function(){
+            oldColor = this.style.backgroundColor;
+            this.style.backgroundColor = "green";
+        };
+        oTab.tBodies[0].rows[i].onmouseout = function(){
+            this.style.backgroundColor = oldColor;
+        }
+    }
+   var btn = document.getElementById("search");
+   btn.onclick = function(){
+
+      var arr = [];
+
+       //把所有的tr放到数组里
+       for(var i=0;i<oTab.tBodies[0].rows.length;i++){
+           arr[i] = oTab.tBodies[0].rows[i];
+       };
+
+       //为数组写比较函数
+       arr.sort(function(tr1,tr2){
+           var n1 = parseInt(tr1.cells[0].innerHTML);
+           var n2 = parseInt(tr2.cells[0].innerHTML);
+            return n1-n2;
+       });
+
+       //把数组里的元素重新插入表格
+       for(var i=0;i<arr.length;i++){
+           oTab.tBodies[0].appendChild(arr[i]);
+       }
+
+   }
+</script>
+</body>
+</html>

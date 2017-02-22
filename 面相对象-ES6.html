@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    class Person{
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        showName(){
+            return this.name;
+        }
+        showAge(){
+           return this.age;
+        }
+    }
+    var p1 = new Person("yagao",30);
+    var p2 = new Person("xu",31);
+
+    alert(p1.showAge());
+    alert(p1.showAge == p2.showAge);
+</script>
+</body>
+</html>

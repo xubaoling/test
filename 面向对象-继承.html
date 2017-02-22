@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>面向对象-继承</title>
+</head>
+<body>
+
+<script>
+    class Person{
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        showName(){
+            return this.name;
+        }
+        showAge(){
+            return this.age
+        }
+    }
+    //继承
+    class Worker extends Person{
+        constructor(name,age,job="writing code"){
+            super(name,age);
+            this.job = job;
+        }
+        showJob(){
+            return this.job;
+        }
+    }
+
+    var p1 = new Person("xu",30);
+//    alert(p1.showName());
+    var w1 = new Worker("baoling",18);
+    alert(w1.showJob());
+    alert(w1.showName());
+
+</script>
+</body>
+</html>

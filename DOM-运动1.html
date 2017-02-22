@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>DOM-运动1</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            position: absolute;
+            left: -100px;
+            top: 0;
+        }
+
+        #box div {
+            width: 100px;
+            height: 200px;
+            background-color: brown;
+        }
+
+        #box span {
+            display: inline-block;
+            width: 20px;
+            height: 50px;
+            background-color: antiquewhite;
+            position: absolute;
+            left: 100px;
+            top: 75px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <div>
+
+    </div>
+    <span>分享</span>
+</div>
+<script>
+    var oBox = document.getElementById("box");
+    var timer = null;
+    function move(speed,iTar) {
+
+        clearInterval(timer);
+        timer = setInterval(function () {
+
+            if(oBox.offsetLeft == iTar){
+
+                console.log(oBox.offsetLeft);
+            }else{
+
+                oBox.style.left = oBox.offsetLeft+speed+"px";
+            }
+
+        }, 30);
+    };
+    oBox.onmouseover = function () {
+        move(10,0);
+    };
+    oBox.onmouseout = function () {
+        move(-10,-100);
+    };
+</script>
+</body>
+</html>

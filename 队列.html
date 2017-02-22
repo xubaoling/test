@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>队列</title>
+</head>
+<body>
+<script>
+
+    class Queue{
+        constructor(content=[]){
+            this._queue = [...content];
+        }
+        shiftDelete(){
+            const value = this._queue[0];
+            this._queue.shift();
+            return value;
+        }
+        pushNum(n){
+            this._queue.push(n);
+            return this._queue;
+        }
+    }
+    var q = new Queue([1,2,3,4]) ;
+
+    q.shiftDelete();
+    q.pushNum(5);
+    console.log(q._queue);
+
+</script>
+</body>
+</html>

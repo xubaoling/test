@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        // 总共分了10份,准备给content 10份
+        setRem();
+        window.onresize = setRem;
+        function setRem() {
+            document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth / 10 + 'px';
+        }
+    </script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #moveBox{
+            width: 9rem;
+            height: 3rem;
+            margin: 1rem auto;
+            background-color: aqua;
+            position: relative;
+            overflow: hidden;
+        }
+        #moveBox ul{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #moveBox ul li{
+            float: left;
+            display: inline-block;
+            width: 3rem;
+            height: 3rem;
+            list-style: none;
+            background-color: antiquewhite;
+        }
+        #moveBox ul li img{
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+<div id="moveBox">
+    <ul>
+        <li><img src="img/1.jpg" alt=""/></li>
+        <li><img src="img/2.jpg" alt=""/></li>
+        <li><img src="img/3.jpg" alt=""/></li>
+    </ul>
+
+</div>
+<script>
+    var moveBox = document.getElementById("moveBox");
+    var oUl = moveBox.getElementsByTagName("ul")[0];
+    var aLis = oUl.getElementsByTagName("li");
+
+    oUl.innerHTML += oUl.innerHTML;
+    oUl.style.width = aLis[0].offsetWidth*aLis.length+"px";
+    var timer = null;
+    timer = function move(){
+        if(oUl.offsetLeft<-oUl.offsetWidth/2){
+            oUl.style.left = 0;
+        }
+        oUl.style.left = oUl.offsetLeft-2+"px";
+//        oUl.style.left =( oUl.offsetLeft-2)/72+"rem";
+
+    };
+    setInterval(timer,30);
+</script>
+</body>
+</html>

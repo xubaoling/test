@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        // 总共分了10份,准备给content 10份
+        setRem();
+        window.onresize = setRem;
+        function setRem() {
+            document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth / 10 + 'px';
+        }
+    </script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box div{
+            float: left;
+        }
+        #div1{
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: coral;
+        }
+        #div2{
+            width: 2rem;
+            height: 2rem;
+            background-color: gold;
+            margin-left: 0.2rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="div1"></div>
+    <div id="div2"></div>
+</div>
+<script>
+    var oDiv1 = document.getElementById("div1");
+    var oDiv2 = document.getElementById("div2");
+    var timer = null;
+
+    oDiv2.onmouseover = oDiv1.onmouseover = function(){
+        clearTimeout(timer);
+        oDiv2.style.display= "block";
+    }
+    oDiv2.onmouseout = oDiv1.onmouseout = function(){
+
+        timer = setTimeout(function(){
+            oDiv2.style.display = "none";
+        },1000)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*    oDiv1.onmouseover = function(){
+
+        clearTimeout(timer);
+        oDiv2.style.display = "block";
+    }
+    oDiv1.onmouseout = function(){
+        timer = setInterval(function(){
+
+            oDiv2.style.display = "none";
+        },1000)
+    }
+    oDiv2.onmouseover = function(){
+        clearTimeout(timer);
+    }
+    oDiv2.onmouseout = function(){
+        timer = setTimeout(function(){
+            oDiv2.style.display = "none"
+        },1000)
+    }*/
+</script>
+</body>
+</html>

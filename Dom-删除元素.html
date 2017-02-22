@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="ul">
+    <li>442<a href="javascriot:;">删除</a></li>
+    <li>442<a href="javascriot:;">删除</a></li>
+    <li>442<a href="javascriot:;">删除</a></li>
+
+</ul>
+<script>
+    var oUl = document.getElementById("ul");
+    var aAs =oUl.getElementsByTagName("a");
+    for(var i=0;i<aAs.length;i++){
+        aAs[i].onclick = function(){
+            oUl.removeChild(this.parentNode);
+        }
+    }
+</script>
+</body>
+</html>

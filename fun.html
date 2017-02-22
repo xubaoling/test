@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>fun</title>
+</head>
+<body>
+
+<div id="div1"></div>
+<button id="btn">click me</button>
+<script>
+    window.onload=function(){
+
+       var oDiv = document.getElementById("div1");
+       var oBtn = document.getElementById("btn");
+       oBtn.onclick=function(){
+           oDiv.innerHTML = show(1,6);
+       }
+
+    };
+    function show(a,b){
+//        var oDiv = document.getElementById("div1");
+//        oDiv.innerHTML=a+b;
+//        return oDiv.innerHTML = a+b;
+        return a+b;
+    };
+</script>
+</body>
+</html>

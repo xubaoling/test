@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>DOM-表格隔行变色</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+    <th>id</th>
+    <th>姓名</th>
+    <th>年龄</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>yagao</td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>yixing</td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>keke</td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>lingling</td>
+        <td>30</td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    var oTab = document.getElementsByTagName("table")[0];
+    var oldColor = "";
+    for(var i=0;i<oTab.tBodies[0].rows.length;i++){
+        if(i%2){
+            oTab.tBodies[0].rows[i].style.backgroundColor = "#ccc"
+        };
+        oTab.tBodies[0].rows[i].onmouseover = function(){
+            oldColor = this.style.backgroundColor;
+            this.style.backgroundColor = "green";
+        };
+        oTab.tBodies[0].rows[i].onmouseout = function(){
+            this.style.backgroundColor = oldColor;
+        }
+    }
+</script>
+</body>
+</html>

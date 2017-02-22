@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>DOM - 表格隔行变色 - 添加一行</title>
+</head>
+<body>
+姓名：<input type="text" id="name"/>
+年龄：<input type="text" id="age"/>
+<button id="add">添加</button>
+<br/>
+<br/>
+<hr/>
+<table border="1">
+    <thead>
+    <tr>
+    <th>id</th>
+    <th>姓名</th>
+    <th>年龄</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>yagao</td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>yixing</td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>keke</td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>lingling</td>
+        <td>30</td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    var oTab = document.getElementsByTagName("table")[0];
+    var oldColor = "";
+    for(var i=0;i<oTab.tBodies[0].rows.length;i++){
+        if(i%2){
+            oTab.tBodies[0].rows[i].style.backgroundColor = "#ccc"
+        };
+        oTab.tBodies[0].rows[i].onmouseover = function(){
+            oldColor = this.style.backgroundColor;
+            this.style.backgroundColor = "green";
+        };
+        oTab.tBodies[0].rows[i].onmouseout = function(){
+            this.style.backgroundColor = oldColor;
+        }
+    }
+    var id = oTab.rows.length;
+    var btn = document.getElementById("add");
+    btn.onclick = function(){
+
+        var oTr = document.createElement("tr");
+        var oTd = document.createElement("td");
+        oTd.innerHTML = id++;
+        oTr.appendChild(oTd);
+
+        var oTd = document.createElement("td");
+        oTd.innerHTML = document.getElementById("name").value;
+        oTr.appendChild(oTd);
+
+        var oTd = document.createElement("td");
+        oTd.innerHTML = document.getElementById("age").value;
+        oTr.appendChild(oTd);
+
+        var oTd = document.createElement("td");
+        oTd.innerHTML = '<a href="javascript:;">删除</a>';
+        oTr.appendChild(oTd);
+        oTab.tBodies[0].appendChild(oTr);
+    }
+</script>
+</body>
+</html>

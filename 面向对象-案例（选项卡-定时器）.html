@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title>面向对象-案例（选项卡）</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script type="text/javascript">
+        // 总共分了10份,准备给content 10份
+        setRem();
+        window.onresize = setRem;
+        function setRem() {
+            document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth / 10 + 'px';
+        }
+    </script>
+    <style>
+        .on {
+            background-color: brown;
+            color: beige;
+        }
+
+        .box div {
+            width: 5rem;
+            height: 5rem;
+            border: 1px solid #cccccc;
+            display: none;
+            font-size: 20px;
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+<div id="box" class="box">
+    <input type="button" value="click 1" class="on"/>
+    <input type="button" value="click 2"/>
+    <input type="button" value="click 3"/>
+
+    <div style="display: block">click 1</div>
+    <div>click 2</div>
+    <div>click 3</div>
+
+</div>
+<div id="box2" class="box">
+    <input type="button" value="click 1" class="on"/>
+    <input type="button" value="click 2"/>
+    <input type="button" value="click 3"/>
+
+    <div style="display: block">click 1</div>
+    <div>click 2</div>
+    <div>click 3</div>
+
+</div>
+<script>
+    class Tap {
+        constructor(id) {
+            this.oBox = document.getElementById(id);
+            this.aBtn = this.oBox.getElementsByTagName("input");
+            this.aDiv = this.oBox.getElementsByTagName("div");
+            this.iNow = 0;
+            this.init();
+        }
+
+        init() {
+            for (let i = 0; i < this.aBtn.length; i++) {
+
+                this.aBtn[i].onclick = function () {
+                    this.iNow = i;
+                    this.hide();
+                    this.show(i);
+                    document.title = this.iNow;
+                }.bind(this);
+            }
+        }
+
+        hide() {
+            for (let i = 0; i < this.aBtn.length; i++) {
+                this.aBtn[i].className = "";
+                this.aDiv[i].style.display = "none";
+
+            }
+        }
+
+        show(index) {
+            this.aBtn[index].className = "on";
+            this.aDiv[index].style.display = "block";
+        }
+    }
+    new Tap("box");
+
+    //继承
+    class AutoTap extends Tap {
+        constructor(id){
+            super(id);
+            setInterval(this.next.bind(this),1000);
+        }
+
+        next(){
+            this.iNow++;
+            if(this.iNow == this.aBtn.length)this.iNow=0;
+            this.hide();
+            this.show(this.iNow);
+        }
+    }
+   var at = new AutoTap("box2");
+    document.onclick= function(){
+        at.next();
+    }
+</script>
+</body>
+</html>

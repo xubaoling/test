@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>map</title>
+</head>
+<body>
+<script>
+    var map = new Map();
+    map.set("a","apple");
+    map.set("b","pear");
+//    map.delete("a");
+//    console.log(map);
+
+//    alert(map.get("b"));
+   /* for(var [key,name] of map){
+        console.log(key);
+        console.log(name);
+    }*/
+    for(var name of map.entries()){
+        console.log(name);
+    }
+</script>
+</body>
+</html>

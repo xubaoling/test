@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+    };
+    Person.prototype.showName = function(){
+        return this.name;
+    };
+    Person.prototype.showAge = function(){
+        return this.age;
+    };
+    var p1 = new Person("yixing",30);
+    alert(p1.showName());
+
+    var p2 = new Person("yagao",29);
+    alert(p2.showName());
+
+    /*
+    Person类有两个对象，为这两个对象添加方法、属性，
+
+    */
+    var rus = 12/0;
+    console.log(rus);
+    var n = 0/0;
+    console.log(n);
+    alert(0/4);
+
+</script>
+</body>
+</html>
